@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,vs
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,vs
 
+db.sqlite3
+
 ### Node ###
 # Logs
 logs
@@ -118,6 +120,7 @@ dist
 
 # DynamoDB Local files
 .dynamodb/
+
 
 # TernJS port file
 .tern-port
