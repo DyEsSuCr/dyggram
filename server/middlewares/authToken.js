@@ -7,7 +7,7 @@ export const authToken = async (req, res, next) => {
   try {
     if (!token) return res.status(403).json({ messaje: 'No token provided' })
 
-    const decoded = jwt.verify(token, process.env.SECRET)
+    const decoded = jwt.verify(token, process.env.KEY)
     const user = await User.findByPk(decoded.id, {
       attributes: {
         exclude: ['password']
