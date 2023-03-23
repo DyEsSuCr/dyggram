@@ -8,6 +8,8 @@ export function SignUp () {
   const [succes, setSucces] = useState(true)
 
   const createUser = async (data) => {
+    console.log(data)
+
     reset()
     setSucces(!succes)
     setTimeout(() => setSucces(true), 5000)
