@@ -22,9 +22,9 @@ const app = express()
 app.set('port', env.PORT)
 
 // NOTE: MiddleWares
-app.use(express.json())
 app.use(cookieParser())
-app.use(cors({ credentials: true }))
+app.use(express.json())
+app.use(cors({ credentials: true, origin: 'http://localhost:5173' }))
 
 // NOTE: Routes
 app.use('/api', authRoutes)

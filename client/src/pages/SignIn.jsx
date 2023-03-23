@@ -5,8 +5,19 @@ export function SignIn () {
   const { email, password } = validateSignIn
   const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const login = (data) => {
-    console.log(data)
+  const login = async (data) => {
+    const res = await fetch('http://localhost:3000/api/signin/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(data)
+    })
+
+    const user = await res.json()
+
+    console.log(user)
   }
 
   return (
