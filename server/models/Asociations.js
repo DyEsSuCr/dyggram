@@ -1,5 +1,5 @@
 import { Post } from './Post.js'
-import { User } from './User.js'
+import { User } from './Users.js'
 import { Heart } from './Hearts.js'
 import { Comment } from './Comments.js'
 
