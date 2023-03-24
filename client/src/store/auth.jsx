@@ -1,6 +1,7 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-export const useAuthStore = create((set) => ({
+export const useAuthStore = create(persist((set) => ({
   authUser: null,
   setUser: (user) => set((state) => ({ authUser: user })),
   removeUser: () => set((state) => ({ authUser: null })),
@@ -20,4 +21,4 @@ export const useAuthStore = create((set) => ({
 
     set((state) => ({ ...state, authUser: user }))
   }
-}))
+}), { name: 'userAuth' }))
