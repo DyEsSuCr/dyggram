@@ -16,9 +16,9 @@ export const authSignIn = async (req, res) => {
       expiresIn: 86400
     })
 
-    res.cookie('access_token', token, { httpOnly: true }).status(200).json({ user })
+    res.cookie('access_token', token, { httpOnly: true }).status(200).json(user)
   } catch (err) {
-    res.status(404).json({ err })
+    res.status(404).json(err)
   }
 }
 
@@ -38,6 +38,6 @@ export const authSignUp = async (req, res) => {
 
     res.cookie('access_token', token, { httpOnly: true }).status(200).json({ user: userData })
   } catch (err) {
-    res.status(404).json({ err })
+    res.status(404).json(err)
   }
 }
