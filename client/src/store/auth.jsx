@@ -4,7 +4,19 @@ import { persist } from 'zustand/middleware'
 export const useAuthStore = create(persist((set) => ({
   authUser: null,
   setUser: (user) => set((state) => ({ authUser: user })),
-  removeUser: () => set((state) => ({ authUser: null })),
+
+  removeUser: async () => {
+    await fetch('http://localhost:3000/api/logout/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    })
+
+    set((state) => ({ authUser: null }))
+  },
+
   getUser: async (data) => {
     const res = await fetch('http://localhost:3000/api/signin/', {
       method: 'POST',

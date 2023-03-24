@@ -41,3 +41,11 @@ export const authSignUp = async (req, res) => {
     res.status(404).json(err)
   }
 }
+
+export const authLogout = async (req, res) => {
+  try {
+    res.clearCookie('access_token').send('logout')
+  } catch (err) {
+    res.status(404).json(err)
+  }
+}

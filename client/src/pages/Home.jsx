@@ -6,7 +6,7 @@ export function Home () {
   return (
     <div>
       <h1>Welcome {authUser?.username}</h1>
-      <button onClick={() => removeUser()}>Cerrar </button>
+      <button onClick={async () => removeUser()}>Cerrar</button>
     </div>
   )
 }
