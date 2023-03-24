@@ -1,5 +1,4 @@
-import { SignUp } from '../pages/SignUp'
-import { SignIn } from '../pages/SignIn'
+import { SignIn, SignUp } from '../pages/index'
 
 export function Root () {
   return (
