@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { User } from '../models/Users.js'
+import { env } from '../config.js'
 
 export const verifyToken = async (req, res, next) => {
   const token = req.cookies.access_token
@@ -7,7 +8,7 @@ export const verifyToken = async (req, res, next) => {
   try {
     if (!token) return res.status(403).json({ messaje: 'No token provided' })
 
-    const decoded = jwt.verify(token, process.env.KEY)
+    const decoded = jwt.verify(token, env.KEY)
     const user = await User.findByPk(decoded.id, {
       attributes: {
         exclude: ['password']

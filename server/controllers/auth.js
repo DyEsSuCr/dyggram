@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import { User } from '../models/Users.js'
+import { env } from '../config.js'
 
 export const authSignIn = async (req, res) => {
   try {
@@ -12,7 +13,7 @@ export const authSignIn = async (req, res) => {
       }
     })
 
-    const token = jwt.sign({ id: user.id }, process.env.KEY, {
+    const token = jwt.sign({ id: user.id }, env.KEY, {
       expiresIn: 86400
     })
 
@@ -30,7 +31,7 @@ export const authSignUp = async (req, res) => {
       password: req.body.password
     })
 
-    const token = jwt.sign({ id: user.id }, process.env.KEY, {
+    const token = jwt.sign({ id: user.id }, env.KEY, {
       expiresIn: 86400
     })
 
