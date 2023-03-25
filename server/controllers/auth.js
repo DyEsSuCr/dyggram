@@ -42,6 +42,14 @@ export const authSignUp = async (req, res) => {
   }
 }
 
+export const verifyToken = async (req, res) => {
+  try {
+    res.send('is authenticated')
+  } catch (err) {
+    res.status(404).json(err)
+  }
+}
+
 export const authLogout = async (req, res) => {
   try {
     res.clearCookie('access_token').send('logout')

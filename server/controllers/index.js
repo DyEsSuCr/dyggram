@@ -1,3 +1,3 @@
-import { authSignIn, authSignUp, authLogout } from './auth.js'
+import { authSignIn, authSignUp, verifyToken, authLogout } from './auth.js'
 
-export const auth = { authSignIn, authSignUp, authLogout }
+export const auth = { authSignIn, authSignUp, verifyToken, authLogout }
