@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url'
 // NOTE: Local
 import { env } from './config.js'
 import authRoutes from './routes/auth.js'
+import usersRoutes from './routes/users.js'
 
 // NOTE: Variables
 const __filename = fileURLToPath(import.meta.url)
@@ -28,6 +29,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:5173' }))
 
 // NOTE: Routes
 app.use('/api', authRoutes)
+app.use('/api', usersRoutes)
 
 // NOTE: Static Files
 app.use(express.static(path.join(__dirname, 'public')))
