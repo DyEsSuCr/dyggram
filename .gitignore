@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,vs
 
 db.sqlite3
+assets/
 
 ### Node ###
 # Logs
