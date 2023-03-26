@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
+import { BASE_URL } from '../services/settings'
 import { useAuthStore } from '../store/auth'
 import { Header } from '../components/Headers/Header'
 
@@ -15,7 +16,7 @@ export function App () {
       if (!res.ok) removeUser()
     }
 
-    verifyToken('http://localhost:3000/api/verify')
+    verifyToken(`${BASE_URL}/verify/`)
   }, [])
 
   return (

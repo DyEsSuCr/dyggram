@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import { BASE_URL } from '../services/settings'
 import { validateSignUp } from '../validators/validateSignUp'
 
 export function SignUp () {
@@ -8,7 +9,7 @@ export function SignUp () {
   const [succes, setSucces] = useState(true)
 
   const createUser = async (data) => {
-    const res = await fetch('http://localhost:3000/api/signup/', {
+    const res = await fetch(`${BASE_URL}/signup/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

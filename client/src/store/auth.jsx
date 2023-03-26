@@ -1,12 +1,13 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { BASE_URL } from '../services/settings'
 
 export const useAuthStore = create(persist((set) => ({
   authUser: null,
   setUser: (user) => set((state) => ({ authUser: user })),
 
   removeUser: async () => {
-    await fetch('http://localhost:3000/api/logout/', {
+    await fetch(`${BASE_URL}/logout/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -18,7 +19,7 @@ export const useAuthStore = create(persist((set) => ({
   },
 
   getUser: async (data) => {
-    const res = await fetch('http://localhost:3000/api/signin/', {
+    const res = await fetch(`${BASE_URL}/signin/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
