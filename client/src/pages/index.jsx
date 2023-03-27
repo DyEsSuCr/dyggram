@@ -2,7 +2,7 @@ import { SignIn } from './SignIn'
 import { SignUp } from './SignUp'
 import { Home } from './Home'
 import { Explore } from './Explore'
-import { Profile } from './Profile'
+import { Profiles } from './Profiles'
 import { Create } from './Create'
 
-export { SignIn, SignUp, Home, Explore, Profile, Create }
+export { SignIn, SignUp, Home, Explore, Profiles, Create }
