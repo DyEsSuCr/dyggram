@@ -33,7 +33,8 @@ export const User = conectionSequelize.define('users', {
   },
   email: {
     type: DataTypes.STRING(40),
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   avatar: {
     type: DataTypes.STRING,
