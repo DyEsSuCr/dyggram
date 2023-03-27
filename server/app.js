@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url'
 
 // NOTE: Local
 import { env } from './config.js'
-import upload from './utils/diskStorage.js'
 import authRoutes from './routes/auth.js'
 import usersRoutes from './routes/users.js'
 
@@ -27,14 +26,13 @@ app.set('port', env.PORT)
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({ credentials: true, origin: 'http://localhost:5173' }))
-app.use(upload)
 
 // NOTE: Routes
 app.use('/api', authRoutes)
 app.use('/api', usersRoutes)
 
 // NOTE: Static Files
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'uploads')))
 
 app.use((req, res) => {
   res.status(404).json({

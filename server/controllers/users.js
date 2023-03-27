@@ -37,3 +37,26 @@ export const findOneUser = async (req, res) => {
     res.status(404).json(err)
   }
 }
+
+export const updateUser = async (req, res) => {
+  const { name, biography, web } = req.body
+
+  try {
+    const user = await User.findOne({
+      where: {
+        username: req.params.username
+      }
+    })
+
+    if (req.file) user.avatar = req.file.filename
+    user.name = name
+    user.biography = biography
+    user.web = web
+
+    await user.save()
+
+    res.status(200).send('user update')
+  } catch (err) {
+    res.status(404).json(err)
+  }
+}
