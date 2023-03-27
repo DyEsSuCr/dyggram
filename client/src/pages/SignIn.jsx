@@ -8,13 +8,13 @@ export function SignIn () {
   const { getUser, authUser } = useAuthStore()
   const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const login = (data) => getUser(data)
+  const signin = (data) => getUser(data, 'signin')
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
-      {authUser && <Navigate to='home' />}
+      {authUser && <Navigate to='/home' />}
 
-      <form className='flex flex-col gap-4 shadow-lg shadow-dark-gray p-4 rounded-lg' onSubmit={handleSubmit(login)}>
+      <form className='flex flex-col gap-4 shadow-lg shadow-dark-gray p-4 rounded-lg' onSubmit={handleSubmit(signin)}>
         <h1 className='text-2xl font-semibold text-center'>SignIn</h1>
 
         <input type='email' {...register('email', email)} />

@@ -18,8 +18,8 @@ export const useAuthStore = create(persist((set) => ({
     set((state) => ({ authUser: null }))
   },
 
-  getUser: async (data) => {
-    const res = await fetch(`${BASE_URL}/signin/`, {
+  getUser: async (data, endpoint) => {
+    const res = await fetch(`${BASE_URL}/${endpoint}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

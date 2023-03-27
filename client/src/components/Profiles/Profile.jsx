@@ -8,7 +8,6 @@ export function Profile () {
       {profile === 'User not found' && <Navigate to='/home' />}
 
       <h1>hola {profile.username}</h1>
-      <a href={profile.web}>Mi web</a>
     </div>
   )
 }

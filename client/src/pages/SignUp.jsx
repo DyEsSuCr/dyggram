@@ -1,35 +1,20 @@
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-import { BASE_URL } from '../services/settings'
 import { validateSignUp } from '../validators/validateSignUp'
+import { useAuthStore } from '../store/auth'
+import { Navigate } from 'react-router-dom'
 
 export function SignUp () {
   const { username, email, password, defaultValues } = validateSignUp
-  const { register, handleSubmit, watch, reset, formState: { errors } } = useForm(defaultValues)
-  const [succes, setSucces] = useState(true)
+  const { getUser, authUser } = useAuthStore()
+  const { register, handleSubmit, watch, formState: { errors } } = useForm(defaultValues)
 
-  const createUser = async (data) => {
-    const res = await fetch(`${BASE_URL}/signup/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify(data)
-    })
-
-    const user = await res.json()
-
-    console.log(user)
-
-    reset()
-    setSucces(!succes)
-    setTimeout(() => setSucces(true), 5000)
-  }
+  const signup = (data) => getUser(data, 'signup')
 
   return (
     <div className='flex justify-center items-center min-h-screen'>
-      <form className='flex flex-col gap-4 shadow-lg shadow-dark-gray p-4 rounded-lg' onSubmit={handleSubmit(createUser)}>
+      {authUser && <Navigate to='/home' />}
+
+      <form className='flex flex-col gap-4 shadow-lg shadow-dark-gray p-4 rounded-lg' onSubmit={handleSubmit(signup)}>
         <h1 className='text-2xl font-semibold text-center'>SignUp</h1>
 
         <input type='text' {...register('username', username)} />
@@ -57,7 +42,6 @@ export function SignUp () {
         {errors.confirmPassword && <span>{errors.confirmPassword?.message}</span>}
 
         <input type='submit' />
-        {!succes && <p>Registrado</p>}
       </form>
     </div>
   )
