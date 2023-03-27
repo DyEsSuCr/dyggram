@@ -8,9 +8,7 @@ export const authSignIn = async (req, res) => {
       where: {
         email: req.body.email
       },
-      attributes: {
-        exclude: ['is_active', 'password', 'updatedAt']
-      }
+      attributes: ['id', 'username']
     })
 
     const token = jwt.sign({ id: user.id }, env.KEY, {
@@ -25,19 +23,19 @@ export const authSignIn = async (req, res) => {
 
 export const authSignUp = async (req, res) => {
   try {
-    const user = await User.create({
+    const newUser = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password
     })
 
-    const token = jwt.sign({ id: user.id }, env.KEY, {
+    const token = jwt.sign({ id: newUser.id }, env.KEY, {
       expiresIn: 86400
     })
 
-    const { password, ...userData } = user.dataValues
+    const user = { id: newUser.id, username: newUser.username }
 
-    res.cookie('access_token', token, { httpOnly: true }).status(200).json({ user: userData })
+    res.cookie('access_token', token, { httpOnly: true }).status(200).json(user)
   } catch (err) {
     res.status(404).json(err)
   }
