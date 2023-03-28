@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url'
 import { env } from './config.js'
 import authRoutes from './routes/auth.js'
 import usersRoutes from './routes/users.js'
+import postRoutes from './routes/posts.js'
 
 // NOTE: Variables
 const __filename = fileURLToPath(import.meta.url)
@@ -30,6 +31,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:5173' }))
 // NOTE: Routes
 app.use('/api', authRoutes)
 app.use('/api', usersRoutes)
+app.use('/api', postRoutes)
 
 // NOTE: Static Files
 app.use(express.static(path.join(__dirname, 'uploads')))

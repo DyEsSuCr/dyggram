@@ -22,7 +22,7 @@ export function Form () {
   useEffect(() => {
     const reader = new window.FileReader()
 
-    if (!photo) return
+    if (!photo || photo.length <= 0) return
 
     reader.readAsDataURL(photo[0])
 
