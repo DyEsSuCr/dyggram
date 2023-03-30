@@ -1,3 +1,4 @@
+import { Post } from '../models/Post.js'
 import { User } from '../models/Users.js'
 
 export const findAllUsers = async (req, res) => {
@@ -56,6 +57,25 @@ export const updateUser = async (req, res) => {
     await user.save()
 
     res.status(200).send('user update')
+  } catch (err) {
+    res.status(404).json(err)
+  }
+}
+
+export const findUserPosts = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const post = await Post.findAll({
+      where: {
+        userId: id
+      },
+      attributes: {
+        exclude: ['state']
+      }
+    })
+
+    res.status(201).json(post)
   } catch (err) {
     res.status(404).json(err)
   }
