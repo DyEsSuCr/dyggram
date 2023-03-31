@@ -15,3 +15,13 @@ export const createPost = async (req, res) => {
     res.status(404).json(err)
   }
 }
+
+export const findOnePost = async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id)
+
+    res.status(201).json(post)
+  } catch (err) {
+    res.status(404).json(err)
+  }
+}

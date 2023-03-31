@@ -6,5 +6,6 @@ import upload from '../utils/diskStorage.js'
 const router = Router()
 
 router.post('/posts', verifyToken, upload.single('photo'), post.createPost)
+router.get('/posts/:id', post.findOnePost)
 
 export default router
