@@ -1,8 +1,8 @@
 import { BASE_URL } from '../../services/settings'
 
 export const loaderProfile = async ({ params }) => {
-  const res = await fetch(`${BASE_URL}/users/${params.username}/`)
-  const profile = await res.json()
+  const user = await (await fetch(`${BASE_URL}/users/${params.username}/`)).json()
+  const userPosts = await (await fetch(`${BASE_URL}/users/${user.id}/posts`)).json()
 
-  return { profile }
+  return { user, userPosts }
 }

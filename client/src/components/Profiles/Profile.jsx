@@ -1,13 +1,15 @@
 import { useLoaderData, Navigate } from 'react-router-dom'
+import { Posts } from '../Posts/Posts'
 
 export function Profile () {
-  const { profile } = useLoaderData()
+  const { user, userPosts } = useLoaderData()
 
   return (
     <div>
-      {profile === 'User not found' && <Navigate to='/home' />}
+      {user === 'User not found' && <Navigate to='/home' />}
 
-      <h1>hola {profile.username}</h1>
+      <h1>hola {user.username}</h1>
+      <Posts userPosts={userPosts} />
     </div>
   )
 }
