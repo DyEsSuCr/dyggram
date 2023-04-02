@@ -7,5 +7,6 @@ const router = Router()
 
 router.post('/posts', verifyToken, upload.single('photo'), post.createPost)
 router.get('/posts/:id', post.findOnePost)
+router.get('/posts/:id/hearts', post.findPostHearts)
 
 export default router
