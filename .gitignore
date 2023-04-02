@@ -4,6 +4,7 @@
 db.sqlite3
 assets/
 uploads/
+faker/
 
 ### Node ###
 # Logs
