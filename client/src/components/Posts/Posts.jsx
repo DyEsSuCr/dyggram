@@ -7,8 +7,8 @@ export function Posts ({ userPosts }) {
   const [post, setPost] = useState(null)
 
   const infoPost = async (id) => {
-    const datos = await (await fetch(`${BASE_URL}/posts/${id}`)).json()
-    setPost(datos)
+    const detailPost = await (await fetch(`${BASE_URL}/posts/${id}`)).json()
+    setPost(detailPost)
   }
 
   return (
