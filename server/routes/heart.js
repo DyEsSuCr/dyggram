@@ -7,5 +7,6 @@ const router = Router()
 
 router.post('/hearts', verifyToken, validateHearts, hearts.createHeart)
 router.delete('/hearts', verifyToken, hearts.deleteHeart)
+router.post('/heart', verifyToken, hearts.existHeart)
 
 export default router

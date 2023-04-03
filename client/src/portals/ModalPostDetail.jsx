@@ -4,10 +4,24 @@ import { BASE_URL } from '../services/settings'
 export function ModalPostDetail ({ post, setPost }) {
   const { id, photo } = post
   const [hearts, setHearts] = useState(0)
+  const [authHeart, setAuthHeart] = useState(null)
 
   const postHearts = async () => {
     const postsHearts = await (await fetch(`${BASE_URL}/posts/${post.id}/hearts`)).json()
     setHearts(postsHearts.length)
+  }
+
+  const validateHeart = async () => {
+    const valHeart = await (await fetch(`${BASE_URL}/heart`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ post: id })
+    })).json()
+
+    setAuthHeart(valHeart)
   }
 
   const toggleHeart = async () => {
@@ -36,6 +50,7 @@ export function ModalPostDetail ({ post, setPost }) {
 
   useEffect(() => {
     postHearts()
+    validateHeart()
   })
 
   return (
@@ -46,7 +61,7 @@ export function ModalPostDetail ({ post, setPost }) {
         X
       </button>
       <button onClick={toggleHeart}>
-        🤍 {hearts}
+        {!authHeart ? '🤍' : '💛'} {hearts}
       </button>
     </div>
   )
