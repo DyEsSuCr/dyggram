@@ -10,8 +10,8 @@ export function ModalPostDetail ({ post, setPost }) {
     setHearts(postsHearts.length)
   }
 
-  const addHeart = async () => {
-    await fetch(`${BASE_URL}/hearts`, {
+  const toggleHeart = async () => {
+    const res = await fetch(`${BASE_URL}/hearts`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -19,6 +19,17 @@ export function ModalPostDetail ({ post, setPost }) {
       },
       body: JSON.stringify({ post: id })
     })
+
+    if (!res.ok) {
+      await fetch(`${BASE_URL}/hearts`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ post: id })
+      })
+    }
 
     setHearts()
   }
@@ -34,7 +45,7 @@ export function ModalPostDetail ({ post, setPost }) {
       <button className='absolute top-8 right-8 text-4xl' onClick={() => setPost(null)}>
         X
       </button>
-      <button onClick={addHeart}>
+      <button onClick={toggleHeart}>
         🤍 {hearts}
       </button>
     </div>
