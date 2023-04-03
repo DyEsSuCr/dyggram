@@ -13,6 +13,7 @@ import authRoutes from './routes/auth.js'
 import usersRoutes from './routes/users.js'
 import postRoutes from './routes/posts.js'
 import heartsRoutes from './routes/heart.js'
+import commentsRoutes from './routes/comments.js'
 
 // NOTE: Variables
 const __filename = fileURLToPath(import.meta.url)
@@ -34,6 +35,7 @@ app.use('/api', authRoutes)
 app.use('/api', usersRoutes)
 app.use('/api', postRoutes)
 app.use('/api', heartsRoutes)
+app.use('/api', commentsRoutes)
 
 // NOTE: Static Files
 app.use(express.static(path.join(__dirname, 'uploads')))
