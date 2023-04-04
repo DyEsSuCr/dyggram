@@ -20,9 +20,11 @@ export function App () {
   }, [])
 
   return (
-    <div className='min-h-screen min-w-full bg-slate-50'>
+    <div className='relative min-h-screen bg-slate-50 flex flex-col md:flex-row overflow-hidden min-w-[320px]'>
       <Header />
-      <Outlet />
+      <div className='w-full flex justify-center'>
+        <Outlet />
+      </div>
     </div>
   )
 }

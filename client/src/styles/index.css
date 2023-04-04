@@ -5,3 +5,7 @@
 input {
   border: solid 1px black;
 }
+
+.active {
+  background-color: rgb(243 244 246)
+}
