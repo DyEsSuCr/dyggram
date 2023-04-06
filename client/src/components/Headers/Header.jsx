@@ -15,7 +15,7 @@ export function Header () {
     >
       <div className='p-0 md:pt-5'>
         <h1 className='pr-[10vw] font-semibold text-xl mb-8 hidden md:block'>
-          DyGgram
+          𝓓𝔂𝓖𝓰𝓻𝓪𝓶
         </h1>
 
         <nav className='flex justify-center md:flex-col gap-5'>

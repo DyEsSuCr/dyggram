@@ -22,8 +22,10 @@ export function App () {
   return (
     <div className='min-h-screen bg-slate-50 flex flex-col md:flex-row overflow-hidden min-w-[320px]'>
       <Header />
-      <div className='w-full flex justify-center'>
-        <Outlet />
+      <div className='w-full flex flex-row justify-center'>
+        <div className='w-full max-w-7xl p-4'>
+          <Outlet />
+        </div>
       </div>
     </div>
   )

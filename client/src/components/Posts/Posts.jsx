@@ -12,16 +12,15 @@ export function Posts ({ userPosts }) {
   }
 
   return (
-    <div className='grid grid-cols-3 max-w-7xl'>
+    <div className='flex flex-wrap justify-center gap-5'>
       {userPosts?.map(post => (
-        <div className='mx-auto' key={post.id}>
-          <button onClick={() => infoPost(post.id)}>
-            <img className='max-w-sm' src={`http://localhost:3000/images/${post.photo}`} />
-          </button>
+        <div className='flex justify-center' key={post.id}>
+          <figure onClick={() => infoPost(post.id)} className='cursor-pointer rounded-md overflow-hidden'>
+            <img className='lg:max-w-sm' src={`http://localhost:3000/images/${post.photo}`} />
+          </figure>
         </div>
       ))}
       {post && createPortal(<ModalPostDetail post={post} setPost={setPost} />, document.getElementById('post-detail'))}
-      <span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span><span>hola</span>
     </div>
   )
 }
